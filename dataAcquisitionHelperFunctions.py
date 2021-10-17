@@ -12,7 +12,6 @@ class dataAcquisition:
 
     def __init__(self):
         """"""
-
         if platform.system() == "Windows":
             os.add_dll_directory("C:\\Program Files\\Keysight\\IO Libraries Suite\\bin")
             self.rm = visa.ResourceManager("ktvisa32")
@@ -36,7 +35,6 @@ class dataAcquisition:
 
     def doCommand(self, command, hideParams=False):
         """"""
-
         if hideParams:
             (header, data) = command.split(" ", 1)
             if self.debug:
@@ -65,6 +63,21 @@ class dataAcquisition:
                 print("ERROR: :SYSTem:ERRor? returned nothing, command: '%s'" % command)
                 print("Exited because of error.")
                 sys.exit(1)
+
+    def setTriggerParameters(self):
+        """"""
+
+    def setChannelParameters(self):
+        """"""
+
+    def setTimeParameters(self):
+        """"""
+
+    def digitizeChannels(self):
+        """"""
+
+    def measureSignals(self):
+        """"""
 
     def capture(self):
         """"""
