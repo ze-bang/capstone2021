@@ -15,23 +15,25 @@ class dataAcquisition:
         if platform.system() == "Windows":
             os.add_dll_directory("C:\\Program Files\\Keysight\\IO Libraries Suite\\bin")
             self.rm = visa.ResourceManager("ktvisa32")
-            self.infiniiVision = rm.open_resource("USB0::2391::6076::MY60101365::0::INSTR")
+            self.infiniiVision = self.rm.open_resource("USB0::2391::6076::MY60101365::0::INSTR")
             self.infiniiVision.timeout = 50000
             self.debug = 0
         if platform.system() == "Darwin":
             self.rm = visa.ResourceManager("@py")
-            self.infiniiVision = rm.open_resource("USB0::2391::6076::MY60101365::0::INSTR")
+            self.infiniiVision = self.rm.open_resource("USB0::2391::6076::MY60101365::0::INSTR")
             self.infiniiVision.timeout = 50000
             self.debug = 0
         else:
             try:
                 self.rm = visa.ResourceManager("@py")
-                self.infiniiVision = rm.open_resource("USB0::2391::6076::MY60101365::0::INSTR")
+                self.infiniiVision = self.rm.open_resource("USB0::2391::6076::MY60101365::0::INSTR")
                 self.infiniiVision.timeout = 50000
                 self.debug = 0
             except:
                 print("Using an unfamiliar system, please figure out how to connect to the oscilloscope!")
 
+        # Set-up results array to store data
+        self.results = []
 
     def doCommand(self, command, hideParams=False):
         """"""
@@ -64,24 +66,39 @@ class dataAcquisition:
                 print("Exited because of error.")
                 sys.exit(1)
 
-    def setTriggerParameters(self):
+    def setTriggerParameters(self, triggerParameters):
         """"""
 
-    def setChannelParameters(self):
+    def setChannelParameters(self, channelParameters):
         """"""
 
-    def setTimeParameters(self):
+    def setTimeParameters(self, timeParameters):
         """"""
 
-    def digitizeChannels(self):
+    def digitizeChannels(self, channels):
         """"""
 
-    def measureSignals(self):
+    def measureSignals(self, channels):
         """"""
 
-    def capture(self):
+    def prepareOscilloscope(self, triggerParameters, channelParameters, timeParameters):
         """"""
 
-    def analyze(self):
+        self.setTriggerParameters(triggerParameters)
+
+        self.setChannelParameters(channelParameters)
+
+        self.setTimeParameters(timeParameters)
+
+    def analyze(self, channels):
         """"""
 
+        self.digitizeChannels(channels)
+
+        measuredSignals = self.measureSignals(channels)
+
+        self.results = self.storeData(measuredSignals)
+
+    def storeData(self, results):
+
+    def returnResults(self):
