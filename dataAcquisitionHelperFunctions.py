@@ -66,17 +66,71 @@ class dataAcquisition:
                 print("Exited because of error.")
                 sys.exit(1)
 
-    def setTriggerParameters(self, triggerParameters):
-        """"""
+    def setTriggerParameters(self, triggerParameters=None):
+        """
+        Adjusts the trigger parameters remotely on the oscilloscope.
+
+        :param triggerParameters: [type, source, trigger level (V)]
+                                  e.g. ["EDGE", "WGEN2", ""] or ["EDGE","CHANnel 1", "1"]
+        """
+
+        try:
+            self.doCommand(":TRIGger:MODE {}".format(triggerParameters[0]))
+
+            if "WGEN" in triggerParameters[1]:
+                self.doCommand(":TRIGger:EDGE:SOURce {}".format(triggerParameters[1]))
+            else:
+                self.doCommand(":TRIGger:EDGE:SOURce {}".format(triggerParameters[1]))
+                self.doCommand(":TRIGger:EDGE:LEVel {}".format(triggerParameters[2]))
+        except:
+            print("Error adjusting the trigger parameters on the Oscilloscope.")
 
     def setChannelParameters(self, channelParameters):
-        """"""
+        """
+        Adjusts the channel parameters remotely on the oscilloscope.
+
+        :param channelParameters: [["CHANnelX", Vertical Scale (V), Offset (V), BWLimit (ON/OFF)], [], ...]
+        """
+
+        for channel in channelParameters:
+            try:
+                self.doCommand(":{0}:SCALe {1}".format(channel[0],channel[1]))
+                self.doCommand(":{0}:OFFSet {1}".format(channel[0],channel[2]))
+                self.doCommand(":{0}:BWLimit {1}".format(channel[0],channel[3]))
+            except:
+                print("Error in setting channels for channel {}".format(channel[0]))
+
 
     def setTimeParameters(self, timeParameters):
-        """"""
+        """
+        Adjust the time parameters remotely on the oscilloscope
+
+        :param timeParameters: [Mode, Horizontal Scale (ns), Position (ns)]
+        """
+
+        try:
+            self.doCommand(":TIMebase:MODE {}".format(timeParameters[0]))
+            self.doCommand(":TIMebase:SCALe {}E-9".format(timeParameters[1]))
+            self.doCommand(":TIMebase:POSition {}E-9".format(timeParameters[2]))
+        except:
+            print("Error in adjusting the time parameters on the oscilloscope.")
 
     def digitizeChannels(self, channels):
-        """"""
+        """
+        Digitizes channels provided in order to prep them for signal measurement and data
+        acquisition.
+
+        :param channels: Array of channels that need digitizing
+        """
+
+        try:
+            self.doCommand(":ACQuire:TYPE NORMal")
+
+            for channel in channels:
+                self.doCommand(":DIGitize {}".format(channel))
+
+        except:
+            print("Error digitizing signals, please double check your code.")
 
     def measureSignals(self, channels):
         """"""
