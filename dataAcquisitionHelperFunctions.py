@@ -7,7 +7,8 @@
 # Import modules
 import pyvisa as visa
 import sys, os, platform
-
+import matplotlib.pyplot as plt
+import numpy as np
 
 def setupOscilloscopeInput():
     """"""
@@ -16,8 +17,8 @@ def setupOscilloscopeInput():
     channelNumbers = [3, 4]
 
     # Trigger inputs
-    trigMode = "EGDE"
-    trigSource = "WGEN2"
+    trigMode = "EDGE"
+    trigSource = "WGEN1"
     if "WGEN" in trigSource:
         trigLevel = ""
     else:
@@ -25,32 +26,35 @@ def setupOscilloscopeInput():
 
     # Time inputs
     timeMode = "MAIN"
-    timeScale = 1
-    timeOffset = 0
+    timeScale = 50
+    timeOffset = 101
 
     # Channel inputs
-    chan3BWLimit = "ON"
-    chan3Scale = 1
-    chan3Offset = 1
+    chan3BWLimit = "OFF"
+    chan3Scale = 0.005
+    chan3Offset = 0
+    chan3Impedance = "FIFTy"
 
-    chan4BWLimit = "ON"
-    chan4Scale = 1
-    chan4Offset = 1
+    chan4BWLimit = "OFF"
+    chan4Scale = 0.050
+    chan4Offset = 0
+    chan4Impedance = "FIFTy"
 
-    chan3Params = [3, chan3Scale, chan3Offset, chan3BWLimit]
-    chan4Params = [4, chan4Scale, chan4Offset, chan4BWLimit]
+    chan3Params = [3, chan3Scale, chan3Offset, chan3BWLimit, chan3Impedance]
+    chan4Params = [4, chan4Scale, chan4Offset, chan4BWLimit, chan4Impedance]
 
     # Set-up arrays needed for functions
     trigParams = [trigMode, trigSource, trigLevel]
     chanParams = [chan3Params, chan4Params]
     timeParams = [timeMode, timeScale, timeOffset]
 
-    return trigParams, chanParams, timeParams
+    return trigParams, chanParams, timeParams, channelNumbers
 
 class dataAcquisition:
 
     def __init__(self):
         """"""
+
         if platform.system() == "Windows":
             os.add_dll_directory("C:\\Program Files\\Keysight\\IO Libraries Suite\\bin")
             self.rm = visa.ResourceManager("ktvisa32")
@@ -75,11 +79,9 @@ class dataAcquisition:
         # Set-up results array to store data
         self.results = []
 
-        # Set-up delay result
-        self.delay = 0
-
     def doCommand(self, command, hideParams=False):
         """"""
+
         if hideParams:
             (header, data) = command.split(" ", 1)
             if self.debug:
@@ -126,6 +128,7 @@ class dataAcquisition:
 
         try:
             self.doCommand(":TRIGger:MODE {}".format(triggerParameters[0]))
+            self.doCommand(":TRIGger:EDGE:SLOPe POSitive")
 
             if "WGEN" in triggerParameters[1]:
                 self.doCommand(":TRIGger:EDGE:SOURce {}".format(triggerParameters[1]))
@@ -147,6 +150,7 @@ class dataAcquisition:
                 self.doCommand(":CHANnel{0}:SCALe {1}".format(channel[0],channel[1]))
                 self.doCommand(":CHANnel{0}:OFFSet {1}".format(channel[0],channel[2]))
                 self.doCommand(":CHANnel{0}:BWLimit {1}".format(channel[0],channel[3]))
+                self.doCommand(":CHANnel{0}:IMPedance {1}".format(channel[0],channel[4]))
             except:
                 print("Error in setting channels for channel {}".format(channel[0]))
 
@@ -175,8 +179,7 @@ class dataAcquisition:
         try:
             self.doCommand(":ACQuire:TYPE NORMal")
 
-            for channel in channels:
-                self.doCommand(":DIGitize CHANnel{}".format(channel))
+            self.doCommand(":DIGitize CHANnel{0},CHANnel{1}".format(channels[0],channels[1]))
 
         except:
             print("Error digitizing signals, please double check your code.")
@@ -184,14 +187,20 @@ class dataAcquisition:
     def measureSignals(self, channels):
         """"""
         try:
-            query = ":MEASure:DELay CHANnel{0},CHANnel{1}".format(channels[0],channels[1])
+            query = ":MEASure:DELay? CHANnel{0},CHANnel{1}".format(channels[0],channels[1])
             delay = self.getQueryResult(query)
             return delay
         except:
             print("Error in measuring the delay between the two channel signals.")
 
+    def returnOscilloscopeID(self):
+        idnString = self.getQueryResult("*IDN?")
+        print("Identification String: {}".format(idnString))
+
     def prepareOscilloscope(self, triggerParameters, channelParameters, timeParameters):
         """"""
+
+        self.returnOscilloscopeID()
 
         self.setTriggerParameters(triggerParameters)
 
@@ -203,8 +212,8 @@ class dataAcquisition:
         """"""
 
         self.digitizeChannels(channels)
-        self.delay = self.measureSignals(channels)
-        self.storeData(delay)
+        delay = self.measureSignals(channels)
+        self.storeData(float(delay))
 
     def storeData(self, data):
         """"""
@@ -212,3 +221,15 @@ class dataAcquisition:
 
     def plotData(self, plotParameters):
         """"""
+        fileName = "test.csv"
+        fibreName = "Y-11J"
+
+        print(self.results)
+        np.savetxt(fileName, self.results, delimiter=",")
+
+        plt.hist(self.results,bins=int(np.sqrt(1000)))
+        plt.title("Timing Resolution of {} WLSF".format(fibreName))
+        plt.ylabel("Counts")
+        plt.xlabel("Delay (s)")
+        plt.xlim([0,-20E-9])
+        plt.show()

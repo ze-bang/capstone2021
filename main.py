@@ -6,19 +6,19 @@
 
 # Import Modules
 import dataAcquisitionHelperFunctions as run
-import tqdm
+from tqdm import tqdm
 
 # Get parameters that the oscilloscope requires to run and collect data
-trigParams, chanParams, timeParams = run.setupOscilloscopeInput()
+trigParams, chanParams, timeParams, chanNumbers = run.setupOscilloscopeInput()
 
 # Number of data points
 numOfIterations = 1000
 
 # Execute Functions
-run.dataAcquisition.__init__()
-run.dataAcquisition.prepareOscilloscope(triggerParameters=trigParams,channelParameters=chanParams,timeParameters=timeParams)
+dataAcq = run.dataAcquisition()
+dataAcq.prepareOscilloscope(triggerParameters=trigParams,channelParameters=chanParams,timeParameters=timeParams)
 for i in tqdm(range(numOfIterations)):
-    run.dataAcquisition.collectData(channels=channelNumbers)
+    dataAcq.collectData(channels=chanNumbers)
 
 # Plot data
-run.dataAcquisition.plotData(plotParameters=None)
+dataAcq.plotData(plotParameters=None)
