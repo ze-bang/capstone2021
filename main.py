@@ -1,10 +1,12 @@
 # File: main.py
 # Author: Andrija Paurevic
 # Student Number: 1003995297
-# Date: October 8, 2021
+# Date: Fri Nov 12, 2021
 # Description:
 
 # Import Modules
+import numpy as np
+import matplotlib.pyplot as plt
 import dataAcquisitionHelperFunctions as run
 from tqdm import tqdm
 
@@ -12,13 +14,16 @@ from tqdm import tqdm
 trigParams, chanParams, timeParams, chanNumbers = run.setupOscilloscopeInput()
 
 # Number of data points
-numOfIterations = 1000
+numOfIterations = 5000
+collectData = False
 
 # Execute Functions
-dataAcq = run.dataAcquisition()
-dataAcq.prepareOscilloscope(triggerParameters=trigParams,channelParameters=chanParams,timeParameters=timeParams)
-for i in tqdm(range(numOfIterations)):
-    dataAcq.collectData(channels=chanNumbers)
-
-# Plot data
-dataAcq.plotData(plotParameters=None)
+if collectData:
+    dataAcq = run.dataAcquisition()
+    dataAcq.prepareOscilloscope(triggerParameters=trigParams,channelParameters=chanParams,timeParameters=timeParams)
+    for i in tqdm(range(numOfIterations)):
+        dataAcq.collectData(channels=chanNumbers)
+    # Plot data
+    dataAcq.plotData(plotParameters=None)
+else:
+    run.plotCSVFile("16cm_from_sipm_maskingtape_channel4.csv")
