@@ -10,7 +10,8 @@ try:
     import sys, os, platform
     import matplotlib.pyplot as plt
     import numpy as np
-    from scipy.stats import norm
+    from scipy import optimize, special
+    import pylab
 except ModuleNotFoundError or ImportError as error:
     print("Please check you have all the necessary modules installed correctly: {0}".format(error.msg))
     exit(1)
@@ -55,26 +56,62 @@ def setupOscilloscopeInput():
 
     return trigParams, chanParams, timeParams, channelNumbers
 
-def curveFitData(data):
-    (mu, sigma) = norm.fit(data)
-    n, bins, patches = plt.hist(data, round(np.sqrt(len(data))),density=True)
-    for item in patches:
-        item.set_height(item.get_height()/sum(n))
-    y = norm.pdf(bins,mu,sigma)
-    plt.plot(bins, y, 'r--', linewidth=1)
-    plt.hist(data,bins=round(np.sqrt(len(data))),color='skyblue',linewidth=0.25, edgecolor="deepskyblue",density=True)
-    return mu, sigma
+def generateCurveFitData(data):
+    # Set-up histogram to extract data
+    n, bins, patches = plt.hist(data, round(np.sqrt(len(data))),color="white")
 
-def plotCSVFile(fileName):
+    # Set-up output arrays
+    x = np.array([])
+    y = np.array([])
+    dy = np.array([])
+    for item in patches:
+        # Ignore any 0 counts, this helps with data fitting
+        if np.sqrt(item.get_height()) < 1:
+            pass
+        else:
+            # Update:
+            # x -> bin avg value
+            # y -> counts
+            # dy -> sqrt(counts)
+            X,Y,DY = item.get_x(),item.get_height(),np.sqrt(item.get_height())
+            x = np.append(x,X)
+            y = np.append(y,Y)
+            dy = np.append(dy,DY)
+    return x,y,dy
+
+def gaussian(x, *p):
+    # Gaussian guess function
+    return p[0] + p[1] * np.exp(-1 * (x - p[2]) ** 2 / (2 * p[3] ** 2))
+
+def curveFit(fileName):
+    # Load data and convert to ns scale
     data = np.loadtxt(fileName)
     data_ns = data*(-1e9)
-    mu, sigma = curveFitData(data_ns)
-    plt.title("Time Delay between SiPM Channels")
-    plt.ylabel("Normalized Counts")
-    print(sigma)
-    plt.xlabel("Delay Time (ns)")
-    plt.legend([r"$(\mu, \sigma)$ = ({0} ns, {1}ns)".format(round(mu,2),round(sigma,2)),"Data"])
-    plt.show()
+    x, y_data, y_sigma = generateCurveFitData(data_ns)
+
+    # Set-up guess
+    background = 0.
+    mean = 17.8
+    sigma = 0.15
+    peakValue = 400.
+    pGuess = (background, peakValue, mean,sigma)
+
+    # Curve fit begins
+    p, cov = optimize.curve_fit(gaussian, x, y_data, p0=pGuess, sigma=y_sigma)
+
+    print("Estimated parameters: ", p)
+    try:
+        print("Estimated uncertainties: ", np.sqrt(cov.diagonal()))
+    except AttributeError:
+        print("Not calculated; fit is bad.")
+
+    # Plotting
+    pylab.title("Curve Fit of {}".format(fileName))
+    pylab.ylabel("Counts")
+    pylab.xlabel("Time Delay (ns)")
+    pylab.plot(x, y_data, 'ro', x, gaussian(x, *p))
+    pylab.errorbar(x, y_data, yerr=y_sigma, fmt='r+')
+    pylab.show()
 
 class dataAcquisition:
 

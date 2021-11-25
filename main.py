@@ -26,4 +26,4 @@ if collectData:
     # Plot data
     dataAcq.plotData(plotParameters=None)
 else:
-    run.plotCSVFile("16cm_from_sipm_maskingtape_channel4.csv")
+    run.curveFit("16cm_from_sipm_maskingtape_channel4.csv")
