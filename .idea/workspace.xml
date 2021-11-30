@@ -1,34 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="AutoImportSettings">
-    <option name="autoReloadType" value="SELECTIVE" />
-  </component>
   <component name="ChangeListManager">
-    <list default="true" id="be414e84-b189-49a6-9b9e-4daa1841c2e6" name="Changes" comment="Added updated curve fit method that also gives us the error in the parameters." />
+    <list default="true" id="4719ace9-4672-4120-bfb4-3f0b659b19e5" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gui.py" beforeDir="false" afterPath="$PROJECT_DIR$/gui.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="Python Script" />
-      </list>
-    </option>
-  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitSEFilterConfiguration">
-    <file-type-list>
-      <filtered-out-file-type name="LOCAL_BRANCH" />
-      <filtered-out-file-type name="REMOTE_BRANCH" />
-      <filtered-out-file-type name="TAG" />
-      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
-    </file-type-list>
-  </component>
-  <component name="ProjectId" id="1zc3NrdZ1oNXwuP9GEfEZQ7fJy0" />
+  <component name="ProjectId" id="21eR9h5Xpmus4cSX5zC8luP3gsp" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -37,32 +22,23 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="node.js.detected.package.eslint" value="true" />
-    <property name="node.js.detected.package.tslint" value="true" />
-    <property name="node.js.selected.package.eslint" value="(autodetect)" />
-    <property name="node.js.selected.package.tslint" value="(autodetect)" />
-    <property name="settings.editor.selected.configurable" value="vcs.Mercurial" />
-  </component>
-  <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$" />
-    </key>
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RunManager" selected="Python.gui">
-    <configuration name="dataAcquisitionHelperFunctions" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
+    <configuration name="capstoneConfig" type="PythonConfigurationType" factoryName="Python">
+      <module name="Software" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
-      <option name="SDK_HOME" value="/usr/local/bin/python3.9" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="false" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/dataAcquisitionHelperFunctions.py" />
+      <option name="SCRIPT_NAME" value="" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -71,18 +47,18 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="gui" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
+    <configuration name="gui" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Software" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
-      <option name="SDK_HOME" value="/usr/local/bin/python3.9" />
+      <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="false" />
+      <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/gui.py" />
       <option name="PARAMETERS" value="" />
@@ -93,7 +69,8 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="guiHelperFunctions" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
+    <configuration name="main" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Software" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
@@ -104,29 +81,6 @@
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/guiHelperFunctions.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="main" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="/usr/local/bin/python3.9" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/main.py" />
       <option name="PARAMETERS" value="" />
@@ -138,122 +92,27 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Python.gui" />
-      <item itemvalue="Python.dataAcquisitionHelperFunctions" />
+      <item itemvalue="Python.capstoneConfig" />
       <item itemvalue="Python.main" />
-      <item itemvalue="Python.guiHelperFunctions" />
+      <item itemvalue="Python.gui" />
     </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.gui" />
+        <item itemvalue="Python.main" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
-  <component name="SvnConfiguration">
-    <configuration>$USER_HOME$/.subversion</configuration>
-  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="be414e84-b189-49a6-9b9e-4daa1841c2e6" name="Changes" comment="" />
-      <created>1634433511955</created>
+      <changelist id="4719ace9-4672-4120-bfb4-3f0b659b19e5" name="Changes" comment="" />
+      <created>1638299418310</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1634433511955</updated>
-      <workItem from="1634433514052" duration="2187000" />
-      <workItem from="1635204145115" duration="1309000" />
-      <workItem from="1636416103568" duration="7976000" />
-      <workItem from="1636490874264" duration="216000" />
-      <workItem from="1636508703908" duration="574000" />
-      <workItem from="1636733414482" duration="4696000" />
-      <workItem from="1637003548062" duration="1931000" />
-      <workItem from="1637348763649" duration="2315000" />
-      <workItem from="1637352690255" duration="966000" />
-      <workItem from="1637354459531" duration="714000" />
-      <workItem from="1637355395970" duration="724000" />
-      <workItem from="1637601987683" duration="345000" />
-      <workItem from="1637602506253" duration="2566000" />
-      <workItem from="1637635484478" duration="9000" />
-      <workItem from="1637807445828" duration="6194000" />
-      <workItem from="1637813799019" duration="35000" />
-      <workItem from="1637871021080" duration="967000" />
-      <workItem from="1638295616455" duration="306000" />
-      <workItem from="1638295982588" duration="577000" />
-      <workItem from="1638296681240" duration="1269000" />
+      <updated>1638299418310</updated>
+      <workItem from="1638299420525" duration="655000" />
     </task>
-    <task id="LOCAL-00001" summary="Added three files for now to test out object oriented programming.">
-      <created>1634434717008</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1634434717008</updated>
-    </task>
-    <task id="LOCAL-00002" summary="deleted oscilloscopeHelperFunctions.py as it wasn't needed.">
-      <created>1634434970995</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1634434970995</updated>
-    </task>
-    <task id="LOCAL-00003" summary="Added more functions in the class as well as general layout for main.py">
-      <created>1634435678583</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1634435678583</updated>
-    </task>
-    <task id="LOCAL-00004" summary="Completed some of the functions found in the class.">
-      <created>1635205442083</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1635205442083</updated>
-    </task>
-    <task id="LOCAL-00005" summary="Made changes to functions that should allow us to capture data">
-      <created>1636418669973</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1636418669973</updated>
-    </task>
-    <task id="LOCAL-00006" summary="This version of the code connects and collects data.">
-      <created>1636508726030</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1636508726030</updated>
-    </task>
-    <task id="LOCAL-00007" summary="Added new plotting features that used rudimentary gaussian plotting. Next steps include using sophisticated fitting to give us errors on mean and std dev.">
-      <created>1637605110569</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1637605110569</updated>
-    </task>
-    <task id="LOCAL-00008" summary="Added new plotting features that used rudimentary gaussian plotting. Next steps include using sophisticated fitting to give us errors on mean and std dev.">
-      <created>1637605138856</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1637605138856</updated>
-    </task>
-    <task id="LOCAL-00009" summary="Added updated curve fit method that also gives us the error in the parameters.">
-      <created>1637813426957</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1637813426958</updated>
-    </task>
-    <task id="LOCAL-00010" summary="Added updated curve fit method that also gives us the error in the parameters.">
-      <created>1637813584377</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1637813584377</updated>
-    </task>
-    <task id="LOCAL-00011" summary="Added updated curve fit method that also gives us the error in the parameters.">
-      <created>1637813618518</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1637813618518</updated>
-    </task>
-    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -269,23 +128,9 @@
         </entry>
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
-  </component>
-  <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added three files for now to test out object oriented programming." />
-    <MESSAGE value="deleted oscilloscopeHelperFunctions.py as it wasn't needed." />
-    <MESSAGE value="Added more functions in the class as well as general layout for main.py" />
-    <MESSAGE value="Completed some of the functions found in the class." />
-    <MESSAGE value="Made changes to functions that should allow us to capture data" />
-    <MESSAGE value="This version of the code connects and collects data." />
-    <MESSAGE value="Added new plotting features that used rudimentary gaussian plotting. Next steps include using sophisticated fitting to give us errors on mean and std dev." />
-    <MESSAGE value="Added updated curve fit method that also gives us the error in the parameters." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added updated curve fit method that also gives us the error in the parameters." />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/Software$gui.coverage" NAME="gui Coverage Results" MODIFIED="1638297160745" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/Software$dataAcquisitionHelperFunctions.coverage" NAME="dataAcquisitionHelperFunctions Coverage Results" MODIFIED="1634435291733" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/Software$main.coverage" NAME="main Coverage Results" MODIFIED="1638296008865" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/Software$guiHelperFunctions.coverage" NAME="guiHelperFunctions Coverage Results" MODIFIED="1638296216650" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Software$gui.coverage" NAME="gui Coverage Results" MODIFIED="1638299977839" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Software$main.coverage" NAME="main Coverage Results" MODIFIED="1638300065979" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
